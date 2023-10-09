@@ -25,7 +25,7 @@ public class AnimeService {
         System.out.println("Type the name or empty to  all");
         String name = SCANNER.nextLine();
         AnimeRepository.findByName(name)
-                .forEach(p -> System.out.printf("[%d] - %s %d %s%n", p.getId(), p.getName(), p.getEpidodes(), p.getProducer().getName()));
+                .forEach(p -> System.out.printf("[%d] - %s %d %s%n", p.getId(), p.getName(), p.getEpisodes(), p.getProducer().getName()));
 
 
     }
@@ -49,7 +49,7 @@ public class AnimeService {
         System.out.println("Type the id of the producer");
         Integer producerId = Integer.parseInt(SCANNER.nextLine());
         Anime anime = Anime.builder()
-                .epidodes(episodes)
+                .episodes(episodes)
                 .name(name)
                 .producer(Producer.builder().id(producerId).build())
                 .build();
@@ -74,7 +74,7 @@ public class AnimeService {
 
         Anime animeToUpdate = Anime.builder()
                 .id(animeFromDb.getId())
-                .epidodes(episodes)
+                .episodes(episodes)
                 .producer(animeFromDb.getProducer())
                 .name(name)
                 .build();

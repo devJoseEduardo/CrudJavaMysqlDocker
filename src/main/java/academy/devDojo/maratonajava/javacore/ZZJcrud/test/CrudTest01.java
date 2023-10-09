@@ -46,11 +46,12 @@ public class CrudTest01 {
         System.out.println("9. Go Back");
         System.out.println(" Ignore esta coisa aqui");
         System.out.println(" Ignore esta coisa aqui");
+        System.out.println(" Fazendo alteração para testar ");
 
 
     }
 
-    private static void animeMenu() {
+    private static void animeMenu() {   
         System.out.println("Type or number of your operation");
         System.out.println("1. Search for anime");
         System.out.println("2. Delete anime");

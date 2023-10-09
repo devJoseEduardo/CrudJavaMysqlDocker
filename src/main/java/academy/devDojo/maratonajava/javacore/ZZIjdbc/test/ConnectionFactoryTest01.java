@@ -12,11 +12,14 @@ import java.util.List;
 @Log4j2
 public class ConnectionFactoryTest01 {
     public static void main(String[] args) {
-        Producer producer = Producer.builder().name("Studio Deen").build();
-        Producer producerToUpdate = Producer.builder().id(1).name("vinicios junior").build();
-        // ProducerService.save(producer);
+        
+        Producer producer1 = Producer.builder().name("Larry Ellison").build();
+
+        Producer producerToUpdate = Producer.builder().id(2).name("Bill Gates").build();
+         //ProducerService.save(producer1);
+
         //ProducerService.delete(70);
-        //ProducerService.update(producerToUpdate);
+        ProducerService.update(producerToUpdate);
         //List<Producer> producers = ProducerService.findAll();
         //List<Producer> producers = ProducerService.findByName("Pa");
         //log.info("Producers found'{}'", producers);

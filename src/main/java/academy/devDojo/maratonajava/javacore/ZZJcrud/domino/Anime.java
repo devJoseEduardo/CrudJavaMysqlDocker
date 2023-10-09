@@ -8,6 +8,6 @@ import lombok.Value;
 public class Anime {
     Integer id ;
     String name;
-    int epidodes;
+    int episodes;
     Producer producer;
 }

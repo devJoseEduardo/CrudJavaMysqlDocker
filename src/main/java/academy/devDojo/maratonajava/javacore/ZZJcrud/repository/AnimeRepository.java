@@ -34,7 +34,7 @@ public class AnimeRepository {
                         .builder()
                         .id(rs.getInt("id"))
                         .name(rs.getString("name"))
-                        .epidodes(rs.getInt("episode"))////////episode
+                        .episodes(rs.getInt("episodes"))////////episodess
                         .producer(producer)
                         .build();
                 animes.add(anime);
@@ -47,7 +47,7 @@ public class AnimeRepository {
 
     private static PreparedStatement createPrepareStatementFindByName(Connection conn, String name) throws SQLException {
         String sql = """
-                SELECT a.id, a.name,a.episode, a.producer_id , p.name as 'producer_name' FROM anime_store.anime a inner join
+                SELECT a.id, a.name,a.episodes, a.producer_id , p.name as 'producer_name' FROM anime_store.anime a inner join
                 anime_store.producer p on a.producer_id = p.id 
                  where a.name like ?;
                  """;
@@ -69,7 +69,7 @@ public class AnimeRepository {
             Anime anime = Anime.builder()
                     .id(rs.getInt("id"))
                     .name(rs.getString("name"))
-                    .epidodes(rs.getInt("episode"))/////////#
+                    .episodes(rs.getInt("episodes"))/////////#
                     .producer(producer)
                     .build();
 
@@ -83,7 +83,7 @@ public class AnimeRepository {
 
     private static PreparedStatement createPrepareStatementFindById(Connection conn, Integer id) throws SQLException {
         String sql = """
-                SELECT a.id, a.name,a.episode, a.producer_id , p.name as 'producer_name' FROM anime_store.anime a inner join
+                SELECT a.id, a.name,a.episodes, a.producer_id , p.name as 'producer_name' FROM anime_store.anime a inner join
                 anime_store.producer p on a.producer_id = p.id 
                  where a.id = ?;
                  """;
@@ -123,10 +123,10 @@ public class AnimeRepository {
 
     private static PreparedStatement createPreparedStatementSave(Connection conn, Anime anime) throws
             SQLException {
-        String sql = "INSERT INTO `anime_store`.`anime` (`name`, `episode`, `producer_id`) VALUES ( ?, ?, ?);";
+        String sql = "INSERT INTO `anime_store`.`anime` (`name`, `episodes`, `producer_id`) VALUES ( ?, ?, ?);";
         PreparedStatement ps = conn.prepareStatement(sql);
         ps.setString(1, anime.getName());
-        ps.setInt(2, anime.getEpidodes());
+        ps.setInt(2, anime.getEpisodes());
         ps.setInt(3, anime.getProducer().getId());
         return ps;
     }
@@ -143,10 +143,11 @@ public class AnimeRepository {
 
     private static PreparedStatement createPrepareStatementUpdate(Connection conn, Anime anime) throws
             SQLException {
-        String sql = "UPDATE `anime_store`.`anime` SET `name` = ?, `episode` = ? WHERE (`id` = ?);";
+       //ORIGINAL///// String sql = "UPDATE `anime_store`.`anime` SET `name` = ?, `episodes` = ? WHERE (`id` = ?);";
+        String sql = "UPDATE `anime_store`.`anime` SET `name` = ?, `episodes` = ? WHERE (`id` = ?);";
         PreparedStatement ps = conn.prepareStatement(sql);
         ps.setString(1, anime.getName());
-        ps.setInt(2, anime.getEpidodes());
+        ps.setInt(2, anime.getEpisodes());
         ps.setInt(3, anime.getId());
         return ps;
     }

@@ -24,4 +24,5 @@ import lombok.Value;
 public class Producer {
     Integer id;
     String name;
+
 }
